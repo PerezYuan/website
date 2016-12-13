@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var japan = require('./routes/japan');
 
 var app = express();
 
@@ -15,9 +15,7 @@ var nunjucks = require('nunjucks');
 nunjucks.configure(path.join(__dirname, 'views'), {
   autoescape: true,
   express: app,
-  watch: true,
-  trimBlocks:true, //自动去除 block/tag 后面的换行符
-  lstripBlocks:true //自动去除 block/tag 签名的空格
+  watch: true
 });
 
 // uncomment after placing your favicon in /public
@@ -29,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/japan', japan);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
