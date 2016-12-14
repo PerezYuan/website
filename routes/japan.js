@@ -11,8 +11,8 @@ function renderJapan(req, res, next) {
         qiniu.conf.ACCESS_KEY = config.qiuniuConfig.ACCESS_KEY;
         qiniu.conf.SECRET_KEY = config.qiuniuConfig.SECRET_KEY;
         // listPrefix = function(bucket, prefix, marker, limit, delimiter, onret){...}
-        qiniu.rsf.listPrefix('tinashy', null, null,10, null, function(rerr, ret,res){
-            if (res.statusCode == 200) {
+        qiniu.rsf.listPrefix(config.qiuniuConfig.bucket, null, null,10, null, function(rerr, ret,res){
+            if (res && res.statusCode == 200) {
                 let data = ret.items;
                 let imgList = [];
                 data.forEach(function (item) {
@@ -24,7 +24,7 @@ function renderJapan(req, res, next) {
                 });
                 resolve(imgList);
             } else {
-                reject(res);
+                reject(rerr);
             }
         })
     });
