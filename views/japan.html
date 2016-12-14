@@ -6,24 +6,17 @@
 <div class="container">
     <section class="main">
         <ul id="st-stack" class="st-stack-raw">
+            {% for img in imgList%}
             <li>
                 <div class="st-item">
-                    <img src="src/japan/img/rice-ball.jpg"/>
+                    <img src="{{ img.src | safe}}"/>
                 </div>
                 <div class="st-title">
-                    <h2>Rice ball</h2>
-                    <h3>Our memory</h3>
+                    <h2>{{ img.h2 | safe}}</h2>
+                    <h3>{{ img.h3 | safe}}</h3>
                 </div>
             </li>
-            <li>
-                <div class="st-item">
-                    <img src="src/japan/img/orange-juice.jpg"/>
-                </div>
-                <div class="st-title">
-                    <h2>Orange juice</h2>
-                    <h3>Our memory</h3>
-                </div>
-            </li>
+            {% endfor %}
         </ul>
     </section>
 </div><!-- /container -->

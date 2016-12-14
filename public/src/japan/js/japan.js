@@ -4,6 +4,6 @@
  * @desc 照片墙
  */
 
-$( function() {
-    $( '#st-stack' ).stackslider();
+$(function() {
+    $('#st-stack').stackslider();
 });
