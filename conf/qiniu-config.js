@@ -6,10 +6,10 @@
 
 'use strict';
 
-let qiniu = {
+let qiniuConfig = {
     qiniuTestDomain : 'http://oi5p7h27l.bkt.clouddn.com/',
     ACCESS_KEY : 'IgTr5WbCFFiAa10Cwyp0VmM3jr6ZIOWkhqbqqJ-r',
     SECRET_KEY : 'KtB8RTrCXl5ljd2P7Wna7kUfTfXpESEodUPIFZyA'
 }
 
-module.exports(qiniu);
+module.exports = qiniuConfig;
