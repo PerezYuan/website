@@ -21,7 +21,7 @@ $(function() {
             },
             callback: function(res){
                 res = JSON.parse(res);
-                if(res && res.code == 0){
+                if(res && res.code == 1){
                     bf.innerText = "上传成功!"
                 }else{
                     console.log(res.msg);
@@ -80,7 +80,7 @@ $(function() {
                         }
                     }
                 }else{
-                    console.log("上传失败！1");
+                    console.log("上传失败！");
                 }
             }
             xhr.upload.onprogress = function(event){
