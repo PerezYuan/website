@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-    <section class="main">
+    <div class="main">
         <ul id="st-stack" class="st-stack-raw">
             {% for img in imgList%}
             <li>
@@ -18,8 +18,15 @@
             </li>
             {% endfor %}
         </ul>
-    </section>
+    </div>
 </div><!-- /container -->
+<div class="upload">
+    <button id="up">点击上传文件</button>
+    <div>
+        <p id="before"></p>
+        <p id="process"></p>
+    </div>
+</div>
 <script src="src/common/js/jquery/stackslider/modernizr.custom.js"></script>
 <script src="src/common/js/jquery/stackslider/jquery.stackslider.js"></script>
 <script src="src/japan/js/japan.js"></script>

@@ -1,6 +1,3 @@
-/* General Demo Style */
-@import url(http://fonts.useso.com/css?family=Lato:400,700|Englebert);
-
 @font-face {
     font-family: 'icomoon';
     src:url('fonts/icomoon.eot');
@@ -27,7 +24,7 @@
 }
 
 body {
-    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-family: "Microsoft YaHei", Calibri, Arial, sans-serif;
     background: #f6b93c url(../img/noisebg.png);
     font-weight: 400;
     font-size: 15px;
