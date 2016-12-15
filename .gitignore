@@ -3,3 +3,4 @@
 node_modules/**
 .idea/**
 /conf/qiniu-config.js
+/temp/**
