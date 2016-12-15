@@ -7,7 +7,7 @@ const config = require("../conf/conf");
 router.get('/', renderJapan);
 
 function renderJapan(req, res, next) {
-    let p = new Promise(function (resolve, reject) {
+    let p = new Promise((resolve, reject) => {
         qiniu.conf.ACCESS_KEY = config.qiuniuConfig.ACCESS_KEY;
         qiniu.conf.SECRET_KEY = config.qiuniuConfig.SECRET_KEY;
         // listPrefix = function(bucket, prefix, marker, limit, delimiter, onret){...}
@@ -28,7 +28,7 @@ function renderJapan(req, res, next) {
             }
         })
     });
-    p.then(function (imgList) {
+    p.then((imgList) => {
         res.render('japan.html', {
             title : 'Love in Japan',
             imgList
