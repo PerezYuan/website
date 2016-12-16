@@ -52,7 +52,7 @@ let uptoken = (bucket, key) => {
 // 构造上传函数
 let uploadFile = (uptoken, key, realFilePath, resolve, reject) => {
     let extra = new qiniu.io.PutExtra();
-    qiniu.io.putFile(uptoken, key, realFilePath, extra, function(err, ret) {
+    qiniu.io.putFile(uptoken, key, realFilePath, extra, (err, ret) => {
         if(!err) {
             // 上传成功， 处理返回值
             console.log(ret.hash, ret.key, ret.persistentId);
@@ -62,6 +62,12 @@ let uploadFile = (uptoken, key, realFilePath, resolve, reject) => {
             console.log(err);
             reject(err);
         }
+        // 删除temp文件
+        fs.unlink(realFilePath, (err) => {
+            if(err) {
+                console.log('remove err' + err);
+            }
+        });
     });
 }
 
