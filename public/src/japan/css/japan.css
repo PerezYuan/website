@@ -25,7 +25,7 @@
 
 body {
     font-family: "Microsoft YaHei", Calibri, Arial, sans-serif;
-    background: #f6b93c url(../img/noisebg.png);
+    background: #ffa3c0 url(../img/noisebg.png);
     font-weight: 400;
     font-size: 15px;
     color: #333;
@@ -288,7 +288,6 @@ a {
     font-style: normal;
     speak: none;
     font-weight: normal;
-    line-height: 1;
     font-size: 30px;
     line-height: 40px;
     text-align: center;
@@ -298,7 +297,7 @@ a {
     height: 100%;
     left: 0;
     color: #fff;
-    background: #dc4e2a;
+    background: #ffcd80;
     border-radius: 50%;
     cursor: pointer;
     text-shadow: 0 1px 1px rgba(255,255,255,0.5);
@@ -314,7 +313,7 @@ a {
 }
 
 .st-wrapper nav span:hover:before {
-    color: #333;
+    color: #dc4e2a;;
 }
 
 .st-wrapper .st-item {
