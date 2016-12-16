@@ -3,7 +3,7 @@
  * @time 2016/12/13.
  * @desc 照片墙
  */
-
+//todo 修改模式
 $(function() {
     $('#st-stack').stackslider();
 
