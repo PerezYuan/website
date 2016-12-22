@@ -47,7 +47,7 @@ $(function() {
         document.body.appendChild(input);
         input.style.display = 'none';
         input.click();
-        var fileType = ['doc','docx','xls','xlsx','pdf','jpg','png','ppt','pptx'];
+        var fileType = ['jpg','png'];
         input.onchange = function(){
             if(!input.value){return;}
             console.log(input.value);
