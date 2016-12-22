@@ -32,45 +32,63 @@
     }
 
     uploader.prototype = {
-        $el : $('<input>'),
         init(option) {
             let me = this,
                 config = option || {};
             me.config = $.extend(this.config, config);
-            console.log(me.config);
-            me.setElemAttr();
-            me.bind();
+            me.createElem();
         },
-        setElemAttr() {
-            let me = this;
-            me.$el.prop({
+        createElem() {
+            let me = this,
+                $up = this.$el = $('<input>');
+            $up.prop({
                 id: 'uploader',
                 type: 'file',
                 name: 'file',
-                multiple: me.config.multiple ? true : false
-            }).click();
+                multiple: this.config.multiple ? true : false
+            });
+            $up.trigger('click');
+            $up.on('change', $.proxy(me.changeFile, me))
         },
         changeFile() {
-            let me = this,
+            let fd = new FormData,
+                me = this,
                 files =  me.$el[0].files;
-            if (files.length == 0) { return false; }
-            for (let i, ii = files.length;i < ii; i++) {
+            for (let i = 0, ii = files.length;i < ii; i++) {
                 // 判断文件大小
-                if(files[i].size > me.config.maxSize * 1024 * 1024){
+                if(files[i].size > me.config.maxSize * 1024 * 1024) {
                     alert('请上传小于' + me.config.maxSize + 'M的文件');
                     return false;
                 }
                 let type = files[i].name.split('.').pop();
-                if(me.config.type.indexOf(type.toLocaleLowerCase()) == -1){
+                if(me.config.type.indexOf(type.toLocaleLowerCase()) == -1) {
                     alert("暂不支持该类型的文件，请重新选择!");
                     return false;
                 }
+                if(Object.prototype.toString.call(me.config.beforeSend) === '[object Function]') {
+                    if(me.config.beforeSend(me.$el) === false){
+                        return false;
+                    }
+                }
+                fd.append('file' + i, files[i]);
+                $.ajax({
+                    type: "post",
+                    url: "/ajax/upload",
+                    data: fd,
+                    // 取消数据预处理
+                    processData : false,
+                    // 自动加上正确的Content-Type
+                    contentType : false ,
+                    xhr: function(){
+                        let xhr = $.ajaxSettings.xhr();
+                        if(Object.prototype.toString.call(me.config.onProgress) === '[object Function]'
+                            && xhr.upload) {
+                            xhr.upload.addEventListener("progress", me.config.onProgress, false);
+                            return xhr;
+                        }
+                    }
+                });
             }
-            console.log(me.$el);
-        },
-        bind() {
-            let me = this;
-            me.$el.on('change', me.changeFile.call(me));
         }
     }
 
@@ -78,7 +96,11 @@
         new uploader({
             url: '/ajax/upload',
             multiple: true,
-            type : ['jpg', 'png']
+            type : ['jpg', 'png'],
+            onProgress(event) {
+                let pre = Math.floor(100 * event.loaded / event.total);
+                console.log(pre);
+            }
         })
     })
 })($)
