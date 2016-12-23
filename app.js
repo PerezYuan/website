@@ -5,9 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var japan = require('./routes/japan');
-var upload = require('./routes/ajax/upload');
+var index = require('./routes/index'),
+    japan = require('./routes/japan'),
+    upload = require('./routes/ajax/upload'),
+    checkLove = require('./routes/ajax/checkLove');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/japan', japan);
 app.use('/ajax/upload', upload);
+app.use('/ajax/checklove', checkLove);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

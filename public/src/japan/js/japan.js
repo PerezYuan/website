@@ -93,14 +93,37 @@
     }
 
     $('.upload-open').on('click',() => {
-        new uploader({
-            url: '/ajax/upload',
-            multiple: true,
-            type : ['jpg', 'png'],
-            onProgress(event) {
-                let pre = Math.floor(100 * event.loaded / event.total);
-                console.log(pre);
-            }
-        })
+
+    })
+
+    $('#checkLove').on('click',() => {
+        let answer = $('input[name=answer]').val().trim();
+        if (answer === '') {
+            alert('请输入一生所爱~');
+        } else {
+            $.ajax({
+                url: '/ajax/checklove',
+                type: 'post',
+                data: `answer=${answer}`,
+                dataType: 'json',
+                async: false,
+                success(res) {
+                    $('<input type="file">').click();
+                    if (res.code == 1) {
+                        // new uploader({
+                        //     url: '/ajax/upload',
+                        //     multiple: true,
+                        //     type: ['jpg', 'png'],
+                        //     onProgress(event) {
+                        //         let pre = Math.floor(100 * event.loaded / event.total);
+                        //         console.log(pre);
+                        //     }
+                        // })
+                    } else {
+                        alert(res.msg);
+                    }
+                }
+            })
+        }
     })
 })($)
