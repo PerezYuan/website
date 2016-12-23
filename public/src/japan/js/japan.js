@@ -1,95 +1,106 @@
 /**
  * @author perezyuan.
- * @time 2016/12/13.
- * @desc 照片墙
+ * @time 2016/12/19.
+ * @desc
  */
-//todo 修改模式
-$(function() {
+(function ($) {
     $('#st-stack').stackslider();
 
-    var btn = document.getElementById('up'),
-        bf = document.getElementById("before"),
-        prs = document.getElementById("process");
-
-    btn.onclick = function(){
-        myUpload({
-            url: '/ajax/upload',
+    function uploader(option) {
+        this.config = {
+            // 上传的路由
+            url : '',
+            // 上传的种类
+            type : ['jpg', 'png'],
+            // 最大上传限制
             maxSize: 10,
-            multiple: true,
-            beforeSend: function(file){
-                bf.innerText = "开始上传...";
+            // 是否允许一次上传多个
+            multiple: false,
+            // 上传之前
+            beforeSend() {
+                console.log("开始上传...");
             },
-            callback: function(res){
-                res = JSON.parse(res);
-                if(res && res.code == 1){
-                    bf.innerText = "上传成功!"
-                }else{
-                    console.log(res.msg);
-                }
+            // 上传成功回调
+            callback(res) {
+                console.log(res);
             },
-            uploading: function(pre){
-                prs.innerText = "当前上传进度为：" + pre + "%";
+            onProgress(res) {
+                console.log(res);
             }
-        });
+        }
+        this.init(option);
     }
 
-    function myUpload(option){
-        var fd = new FormData(),
-            xhr = new XMLHttpRequest(),
-            input;
-        input = document.createElement('input');
-        input.setAttribute('id', 'myUploadInput');
-        input.setAttribute('type', 'file');
-        input.setAttribute('name', 'file');
-        if(option.multiple){
-            input.setAttribute('multiple', true);
-        }
-        document.body.appendChild(input);
-        input.style.display = 'none';
-        input.click();
-        var fileType = ['jpg','png'];
-        input.onchange = function(){
-            if(!input.value){return;}
-            console.log(input.value);
-            var type = input.value.split('.').pop();
-            if(fileType.indexOf(type.toLocaleLowerCase()) == -1){
-                alert("暂不支持该类型的文件，请重新选择!");
-                return;
-            }
-            for(var i=0, file; file=input.files[i++];){
-                if(option.maxSize &&  file.size > option.maxSize * 1024 * 1024){
-                    alert('请上传小于'+option.maxSize+'M的文件');
-                    return;
-                }
-            }
-            if(option.beforeSend instanceof Function){
-                if(option.beforeSend(input) === false){
+    uploader.prototype = {
+        init(option) {
+            let me = this,
+                config = option || {};
+            me.config = $.extend(this.config, config);
+            me.createElem();
+        },
+        createElem() {
+            let me = this,
+                $up = this.$el = $('<input>');
+            $up.prop({
+                id: 'uploader',
+                type: 'file',
+                name: 'file',
+                multiple: this.config.multiple ? true : false
+            });
+            $up.trigger('click');
+            $up.on('change', $.proxy(me.changeFile, me))
+        },
+        changeFile() {
+            let fd = new FormData,
+                me = this,
+                files =  me.$el[0].files;
+            for (let i = 0, ii = files.length;i < ii; i++) {
+                // 判断文件大小
+                if(files[i].size > me.config.maxSize * 1024 * 1024) {
+                    alert('请上传小于' + me.config.maxSize + 'M的文件');
                     return false;
                 }
-            }
-            for(var i=0, file; file=input.files[i++];){
-                console.log(fd)
-                fd.append('file'+i, file);
-            }
-            xhr.open('post', option.url);
-            xhr.onreadystatechange = function(){
-                if(xhr.status == 200){
-                    if(xhr.readyState == 4){
-                        if(option.callback instanceof Function){
-                            option.callback(xhr.responseText);
+                let type = files[i].name.split('.').pop();
+                if(me.config.type.indexOf(type.toLocaleLowerCase()) == -1) {
+                    alert("暂不支持该类型的文件，请重新选择!");
+                    return false;
+                }
+                if(Object.prototype.toString.call(me.config.beforeSend) === '[object Function]') {
+                    if(me.config.beforeSend(me.$el) === false){
+                        return false;
+                    }
+                }
+                fd.append('file' + i, files[i]);
+                $.ajax({
+                    type: "post",
+                    url: "/ajax/upload",
+                    data: fd,
+                    // 取消数据预处理
+                    processData : false,
+                    // 自动加上正确的Content-Type
+                    contentType : false ,
+                    xhr: function(){
+                        let xhr = $.ajaxSettings.xhr();
+                        if(Object.prototype.toString.call(me.config.onProgress) === '[object Function]'
+                            && xhr.upload) {
+                            xhr.upload.addEventListener("progress", me.config.onProgress, false);
+                            return xhr;
                         }
                     }
-                }else{
-                    console.log("上传失败！");
-                }
+                });
             }
-            xhr.upload.onprogress = function(event){
-                var pre = Math.floor(100 * event.loaded / event.total);
-                if(option.uploading instanceof Function){
-                    option.uploading(pre);
-                }
-            }
-            xhr.send(fd);
         }
     }
-});
+
+    $('.upload-open').on('click',() => {
+        new uploader({
+            url: '/ajax/upload',
+            multiple: true,
+            type : ['jpg', 'png'],
+            onProgress(event) {
+                let pre = Math.floor(100 * event.loaded / event.total);
+                console.log(pre);
+            }
+        })
+    })
+})($)
