@@ -47,7 +47,7 @@
                 name: 'file',
                 multiple: this.config.multiple ? true : false
             });
-            $up.trigger('click');
+            $up.click();
             $up.on('change', $.proxy(me.changeFile, me))
         },
         changeFile() {
@@ -108,8 +108,10 @@
                 dataType: 'json',
                 async: false,
                 success(res) {
-                    $('<input type="file">').click();
                     if (res.code == 1) {
+                        console.log('begin');
+                        $('<input type="file">').click();
+                        console.log('end');
                         // new uploader({
                         //     url: '/ajax/upload',
                         //     multiple: true,

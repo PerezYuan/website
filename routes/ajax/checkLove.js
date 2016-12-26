@@ -10,17 +10,17 @@ const router = express.Router();
 router.post('/', (req, res, next) => {
     let answer = 'Love shy',
         reqAnswer = req.body.answer;
-    if (reqAnswer.toString() === answer) {
-        res.json({
-            code: 1,
-            msg: '验证成功！'
-        })
-    } else {
-        res.json({
-            code: 0,
-            msg: '验证失败！'
-        })
-    }
+        if (reqAnswer.toString() === answer) {
+            res.json({
+                code: 1,
+                msg: '验证成功！'
+            })
+        } else {
+            res.json({
+                code: 0,
+                msg: '验证失败！'
+            })
+        }
 })
 
 
