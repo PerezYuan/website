@@ -108,8 +108,8 @@
                 dataType: 'json',
                 async: false,
                 success(res) {
-                    $('<input type="file">').click();
                     if (res.code == 1) {
+
                         // new uploader({
                         //     url: '/ajax/upload',
                         //     multiple: true,

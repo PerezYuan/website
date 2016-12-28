@@ -10,7 +10,6 @@ function renderJapan(req, res, next) {
     let p = new Promise((resolve, reject) => {
         qiniu.conf.ACCESS_KEY = config.qiuniuConfig.ACCESS_KEY;
         qiniu.conf.SECRET_KEY = config.qiuniuConfig.SECRET_KEY;
-        // listPrefix = function(bucket, prefix, marker, limit, delimiter, onret){...}
         qiniu.rsf.listPrefix(config.qiuniuConfig.bucket, null, null,10, null, function(rerr, ret,res){
             if (res && res.statusCode == 200) {
                 let data = ret.items;
