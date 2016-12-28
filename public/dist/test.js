@@ -1,1 +1,0 @@
-"use strict";var x=function(r){return 2*r};

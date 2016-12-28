@@ -5,9 +5,7 @@ const gulp = require('gulp'),
 
 gulp.task('jsmin', function() {
     return gulp.src(['public/src/**/*.js', '!public/src/lib/**'])
-        .pipe(babel({
-            presets: ['es2015']
-        }))
+        .pipe(babel())
         .pipe(uglify())
         .pipe(gulp.dest('public/dist'));
 });
