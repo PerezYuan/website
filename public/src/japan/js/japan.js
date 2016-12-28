@@ -47,7 +47,7 @@
                 name: 'file',
                 multiple: this.config.multiple ? true : false
             });
-            $up.trigger('click');
+            $up.click();
             $up.on('change', $.proxy(me.changeFile, me))
         },
         changeFile() {
@@ -109,7 +109,6 @@
                 async: false,
                 success(res) {
                     if (res.code == 1) {
-
                         // new uploader({
                         //     url: '/ajax/upload',
                         //     multiple: true,
