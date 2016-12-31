@@ -7,8 +7,10 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index'),
     japan = require('./routes/japan'),
+    excel = require('./routes/excel'),
     upload = require('./routes/ajax/upload'),
-    checkLove = require('./routes/ajax/checkLove');
+    checkLove = require('./routes/ajax/checkLove'),
+    inputInfo = require('./routes/ajax/inputInfo');
 
 var app = express();
 
@@ -29,8 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/japan', japan);
+app.use('/excel', excel);
 app.use('/ajax/upload', upload);
 app.use('/ajax/checklove', checkLove);
+app.use('/ajax/inputInfo', inputInfo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,10 +1,20 @@
 {% extends "layout.html" %}
-
+{% block header %}
+<link rel="stylesheet" href="src/excel/css/excel.css">
+{% endblock %}
 {% block content %}
-<!--<ul>-->
-  <!--{% for item in people %}-->
-  <!--<li>{{ item.name }}</li>-->
-  <!--{% endfor %}-->
-<!--</ul>-->
-    <h1>tinashy~~~~~~建站中</h1>
+<form>
+    <div class="excel-panel">
+        <label>姓名</label><input type="text" name="name">
+    </div>
+    <div class="excel-panel">
+        <label>学号</label><input type="text" name="number">
+    </div>
+    <div class="excel-panel">
+        <label>性别</label><input type="text" name="sex">
+    </div>
+    <div class="excel-panel">
+        <label>生日</label><input type="text" name="birthday">
+    </div>
+</form>
 {% endblock %}

@@ -1,7 +1,7 @@
 /**
  * @author perezyuan.
- * @time 2016/12/23.
- * @desc 判断是否有权限上传
+ * @time 2016/12/31.
+ * @desc 接收学生录取信息
  */
 
 const express = require('express');
