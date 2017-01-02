@@ -1,6 +1,7 @@
 const gulp = require('gulp'),
-      uglify = require('gulp-uglify'),
-      babel = require('gulp-babel');
+    uglify = require('gulp-uglify'),
+    babel = require('gulp-babel'),
+    less = require('gulp-less');
 
 
 gulp.task('jsmin', function() {
@@ -8,4 +9,10 @@ gulp.task('jsmin', function() {
         .pipe(babel())
         .pipe(uglify())
         .pipe(gulp.dest('public/dist'));
+});
+
+gulp.task('less', function () {
+    return gulp.src(['public/src/**/*.less', '!public/src/lib/**'])
+        .pipe(less())
+        .pipe(gulp.dest('./public/dist'));
 });

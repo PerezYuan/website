@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 {% block header %}
-<link rel="stylesheet" href="src/excel/css/excel.css">
+<link rel="stylesheet" href="dist/excel/css/excel.css">
 {% endblock %}
 {% block content %}
-<form>
+<form class="excel-form" id="excelForm">
     <div class="excel-panel">
         <label>姓名</label><input type="text" name="name">
     </div>
@@ -16,5 +16,10 @@
     <div class="excel-panel">
         <label>生日</label><input type="text" name="birthday">
     </div>
+    <button type="button" class="excel-submit">提交按钮</button>
+    <div class="excel-wrap">
+        <img src="src/common/img/loading.gif" alt="loading">
+    </div>
 </form>
+<script src="dist/excel/js/excel.js"></script>
 {% endblock %}
