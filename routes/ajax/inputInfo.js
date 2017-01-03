@@ -20,10 +20,11 @@ router.post('/', (req, res, next) => {
     //读取文件内容
     let obj = xlsx.parse(path.resolve(__dirname, '../../teach.xlsx'));
     let excelObj = obj[0].data;
+    excelObj.push(tempArr);
     console.log(excelObj);
 
-    excelObj.push(tempArr);
-    var buffer = xlsx.build([
+
+    let buffer = xlsx.build([
         {
             name: 'sheet1',
             data: excelObj
@@ -32,16 +33,19 @@ router.post('/', (req, res, next) => {
 
     //将文件内容插入新的文件中
     try {
-        fs.writeFileSync('teach.xlsx',buffer,{'flag':'w'});
+        fs.writeFileSync('teach.xlsx', buffer, {'flag': 'w'});
         res.json({
             code: 1,
             msg: '提交成功！'
         })
     } catch (e) {
-        console.log(e);
+        let msg = '提交失败！';
+        if (e.code == 'EBUSY') {
+            msg = '服务器繁忙，请重试';
+        }
         res.json({
             code: 0,
-            msg: '提交失败'
+            msg: msg
         })
     }
 })
