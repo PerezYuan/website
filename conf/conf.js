@@ -7,7 +7,12 @@ const qiuniuConfig = require('./qiniu-config');
 
 'use strict';
 let config = {
-    qiuniuConfig
+    qiuniuConfig,
+    mysql: {
+        host: '127.0.0.1',
+        user: 'root',
+        password: '***'
+    }
 }
 
 module.exports = config;
