@@ -5,16 +5,23 @@
 {% block content %}
 <form class="excel-form" id="excelForm">
     <div class="excel-panel">
-        <label>姓名</label><input type="text" name="name">
+        <label>姓名</label>
+        <input type="text" name="name">
     </div>
     <div class="excel-panel">
-        <label>学号</label><input type="text" name="number">
+        <label>性别</label>
+        <select name="sex">
+            <option value="0">男</option>
+            <option value="1">女</option>
+        </select>
     </div>
     <div class="excel-panel">
-        <label>性别</label><input type="text" name="sex">
+        <label>学号</label>
+        <input type="text" name="number">
     </div>
     <div class="excel-panel">
-        <label>生日</label><input type="text" name="birthday">
+        <label>生日</label>
+        <input type="text" name="birthday">
     </div>
     <button type="button" class="excel-submit">提交按钮</button>
     <div class="excel-wrap">
