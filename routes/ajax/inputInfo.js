@@ -8,7 +8,6 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const fs = require('fs');
-const xlsx = require('node-xlsx');
 const mysql = require('mysql');
 const config = require('../../conf/conf');
 
@@ -58,23 +57,6 @@ router.post('/', (req, res, next) => {
             code: 1,
             msg: '提交成功！'
         })
-    });
-
-    //读取文件内容
-    let userGetSql = 'SELECT * from info';
-    let userGetSqlParams = [];
-    connection.query(userGetSql, userGetSqlParams, function (err, result) {
-        if (err) {
-            console.log('[SELECT ERROR] - ', err.message);
-            res.json({
-                code: 0,
-                msg: '数据库获取失败，[SELECT ERROR] - ' + err.message
-            })
-        }
-
-        console.log('--------------------------SELECT----------------------------');
-        console.log('SELECT ID:', result);
-        console.log('-----------------------------------------------------------------\n\n');
     });
     // let obj = xlsx.parse(path.resolve(__dirname, '../../teach.xlsx'));
     // let excelObj = obj[0].data;
