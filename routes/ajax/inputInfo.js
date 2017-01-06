@@ -17,20 +17,20 @@ router.post('/', (req, res, next) => {
 
     // 构建mysql连接
     let connection = mysql.createConnection({
-        host     : config.mysql.host,
-        user     : config.mysql.user,
-        password : config.mysql.password,
-        port     : config.mysql.port,
-        database : config.mysql.database,
+        host: config.mysql.host,
+        user: config.mysql.user,
+        password: config.mysql.password,
+        port: config.mysql.port,
+        database: config.mysql.database,
     });
 
-    let  userAddSql = 'INSERT INTO info(id,name,sex,number) VALUES(0,?,?,?)';
-    let  userAddSqlParams = [];
+    let userAddSql = 'INSERT INTO info(id,name,sex,number) VALUES(0,?,?,?)';
+    let userAddSqlParams = [];
     userAddSqlParams.push(info.name ? info.name : '');
     userAddSqlParams.push(info.sex ? info.sex : '');
     userAddSqlParams.push(info.number ? info.number : '');
     // tempArr.push(info.birthday ? info.birthday : '');
-    connection.connect(function(err) {
+    connection.connect(function (err) {
         if (err) {
             console.error('error connecting: ' + err.stack);
             res.json({
@@ -42,9 +42,9 @@ router.post('/', (req, res, next) => {
         console.log('connected as id ' + connection.threadId);
     });
 
-    connection.query(userAddSql,userAddSqlParams,function (err, result) {
-        if(err){
-            console.log('[INSERT ERROR] - ',err.message);
+    connection.query(userAddSql, userAddSqlParams, function (err, result) {
+        if (err) {
+            console.log('[INSERT ERROR] - ', err.message);
             res.json({
                 code: 0,
                 msg: '数据库插入失败，[INSERT ERROR] - ' + err.message
@@ -52,7 +52,7 @@ router.post('/', (req, res, next) => {
         }
 
         console.log('--------------------------INSERT----------------------------');
-        console.log('INSERT ID:',result);
+        console.log('INSERT ID:', result);
         console.log('-----------------------------------------------------------------\n\n');
         res.json({
             code: 1,
@@ -61,6 +61,21 @@ router.post('/', (req, res, next) => {
     });
 
     //读取文件内容
+    let userGetSql = 'SELECT * from info';
+    let userGetSqlParams = [];
+    connection.query(userGetSql, userGetSqlParams, function (err, result) {
+        if (err) {
+            console.log('[SELECT ERROR] - ', err.message);
+            res.json({
+                code: 0,
+                msg: '数据库获取失败，[SELECT ERROR] - ' + err.message
+            })
+        }
+
+        console.log('--------------------------SELECT----------------------------');
+        console.log('SELECT ID:', result);
+        console.log('-----------------------------------------------------------------\n\n');
+    });
     // let obj = xlsx.parse(path.resolve(__dirname, '../../teach.xlsx'));
     // let excelObj = obj[0].data;
     // excelObj.push(tempArr);
