@@ -16,3 +16,11 @@ gulp.task('less', function () {
         .pipe(less())
         .pipe(gulp.dest('./public/dist'));
 });
+
+gulp.task('default', ['jsmin','less'], function() {
+});
+
+gulp.watch(['public/src/**/*.js','public/src/**/*.less'], function(event) {
+    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    gulp.run('default');
+});
