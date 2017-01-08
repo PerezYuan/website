@@ -23,11 +23,12 @@ router.post('/', (req, res, next) => {
         database: config.mysql.database,
     });
 
-    let userAddSql = 'INSERT INTO info(id,name,sex,number) VALUES(0,?,?,?)';
+    let userAddSql = 'INSERT INTO info(id,class,name,sex,learnNum) VALUES(0,?,?,?,?)';
     let userAddSqlParams = [];
+    userAddSqlParams.push(info.class ? info.class : '');
     userAddSqlParams.push(info.name ? info.name : '');
     userAddSqlParams.push(info.sex ? info.sex : '');
-    userAddSqlParams.push(info.number ? info.number : '');
+    userAddSqlParams.push(info.learnNum ? info.learnNum : '');
     // tempArr.push(info.birthday ? info.birthday : '');
     connection.connect(function (err) {
         if (err) {
