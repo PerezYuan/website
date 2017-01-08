@@ -1,53 +1,12 @@
 .excel-form {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  overflow: hidden;
-  background-color: #fff;
-  padding: 20px;
-  text-align: center;
-  border: 1px solid #999;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+  width: 80%;
+  margin: 20px auto;
 }
-.excel-form .excel-panel {
-  width: 300px;
-  margin-top: 20px;
+.excel-submit {
+  display: block;
+  margin: 0 auto;
 }
-.excel-form .excel-panel:first-child {
-  margin-top: 0;
-}
-.excel-form .excel-panel label {
-  color: #666;
-}
-.excel-form .excel-panel input {
-  width: 170px;
-  margin-left: 10px;
-  border: 1px solid #999;
-  padding: 5px 10px;
-}
-.excel-form .excel-panel select {
-  width: 192px;
-  margin-left: 10px;
-  border: 1px solid #999;
-  padding: 5px 10px;
-}
-.excel-form .excel-submit {
-  width: 100px;
-  height: 30px;
-  border: 1px solid #999;
-  background-color: #fff;
-  color: #666;
-  margin-top: 10px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-}
-.excel-form .excel-wrap {
+.excel-wrap {
   display: none;
   position: absolute;
   left: 0;
@@ -56,7 +15,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
-.excel-form .excel-wrap img {
+.excel-wrap img {
   position: absolute;
   left: 50%;
   top: 50%;
