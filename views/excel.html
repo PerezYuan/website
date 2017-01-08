@@ -1,32 +1,39 @@
-{% extends "layout.html" %}
-{% block header %}
-<link rel="stylesheet" href="dist/excel/css/excel.css">
-{% endblock %}
-{% block content %}
-<form class="excel-form" id="excelForm">
-    <div class="excel-panel">
-        <label>姓名</label>
-        <input type="text" name="name" placeholder="请输入你的姓名">
+{% extends "layout.html" %} {% block header %}
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="dist/excel/css/excel.css"> {% endblock %} {% block content %}
+<form class="form-horizontal excel-form" role="form" id="excelForm">
+    <div class="form-group">
+        <label for="class" class="col-sm-2 control-label">班级：</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="class" id="class" placeholder="请输入你的班级">
+        </div>
     </div>
-    <div class="excel-panel">
-        <label>性别</label>
-        <select name="sex">
-            <option value="0">男</option>
-            <option value="1">女</option>
-        </select>
+    <div class="form-group">
+        <label for="class" class="col-sm-2 control-label">姓名：</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="name" id="name" placeholder="请输入你的姓名">
+        </div>
     </div>
-    <div class="excel-panel">
-        <label>学号</label>
-        <input type="text" name="number">
+    <div class="form-group">
+        <label for="class" class="col-sm-2 control-label">性别：</label>
+        <div class="col-sm-10">
+            <select name="sex" class="form-control">
+                <option value="0">男</option>
+                <option value="1">女</option>
+            </select>
+        </div>
     </div>
-    <div class="excel-panel">
-        <label>生日</label>
-        <input type="text" name="birthday">
+    <div class="form-group">
+        <label for="learnNum" class="col-sm-2 control-label">全国学籍号：</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="learnNum" id="learnNum" placeholder="请输入你的姓名">
+        </div>
     </div>
-    <button type="button" class="excel-submit">提交按钮</button>
-    <div class="excel-wrap">
-        <img src="src/common/img/loading.gif" alt="loading">
-    </div>
+    <button type="button" class="btn btn-default excel-submit">提交按钮</button>
 </form>
+<div class="excel-wrap">
+    <img src="src/common/img/loading.gif" alt="loading">
+</div>
 <script src="dist/excel/js/excel.js"></script>
 {% endblock %}
