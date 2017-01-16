@@ -109,15 +109,15 @@
                 async: false,
                 success(res) {
                     if (res.code == 1) {
-                        // new uploader({
-                        //     url: '/ajax/upload',
-                        //     multiple: true,
-                        //     type: ['jpg', 'png'],
-                        //     onProgress(event) {
-                        //         let pre = Math.floor(100 * event.loaded / event.total);
-                        //         console.log(pre);
-                        //     }
-                        // })
+                        new uploader({
+                            url: '/ajax/upload',
+                            multiple: true,
+                            type: ['jpg', 'png'],
+                            onProgress(event) {
+                                let pre = Math.floor(100 * event.loaded / event.total);
+                                console.log(pre);
+                            }
+                        })
                     } else {
                         alert(res.msg);
                     }

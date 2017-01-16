@@ -1,1 +1,0 @@
-"use strict";!function(){var e=$(".excel-submit"),a=$("#excelForm"),t=$(".excel-wrap");e.on("click",function(){t.show();var e=a.serialize();$.ajax({url:"/ajax/inputInfo",type:"post",data:e,success:function(e){1==e.state?(alert("提交成功!"),window.location.reload()):(alert(e.msg),t.hide())}})})}();
