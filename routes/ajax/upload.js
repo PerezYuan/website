@@ -13,6 +13,7 @@ qiniu.conf.ACCESS_KEY = config.qiuniuConfig.ACCESS_KEY;
 qiniu.conf.SECRET_KEY = config.qiuniuConfig.SECRET_KEY;
 
 router.post('/', multipartMiddleware, (req, res, next) => {
+    fs.mkdirSync(uploadDir)
     // 存储promise对象数组
     let promiseArr = [];
     _.forEach(req.files, (value, key) => {
