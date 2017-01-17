@@ -140,7 +140,14 @@
 	        }
 	    };
 	
-	    $('.upload-open').on('click', function () {});
+	    var $overlay = $('.overlay');
+	    $('.J-upload-open').on('click', function () {
+	        $overlay.show();
+	    });
+	
+	    $('.J-upload-close').on('click', function () {
+	        $overlay.hide();
+	    });
 	
 	    $('#checkLove').on('click', function () {
 	        var answer = $('input[name=answer]').val().trim();

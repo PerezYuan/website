@@ -425,6 +425,7 @@ a {
   -moz-transform: rotate(360deg);
 }
 .overlay {
+  display: none;
   position: fixed;
   left: 0;
   top: 0;

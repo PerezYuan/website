@@ -92,8 +92,13 @@
         }
     }
 
-    $('.upload-open').on('click',() => {
+    let $overlay = $('.overlay');
+    $('.J-upload-open').on('click',() => {
+        $overlay.show();
+    })
 
+    $('.J-upload-close').on('click',() => {
+        $overlay.hide();
     })
 
     $('#checkLove').on('click',() => {
