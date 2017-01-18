@@ -12,8 +12,10 @@ let multipartMiddleware = multiparty({uploadDir});
 qiniu.conf.ACCESS_KEY = config.qiuniuConfig.ACCESS_KEY;
 qiniu.conf.SECRET_KEY = config.qiuniuConfig.SECRET_KEY;
 
+// 创建文件夹
+fs.mkdirSync(uploadDir)
+
 router.post('/', multipartMiddleware, (req, res, next) => {
-    fs.mkdirSync(uploadDir)
     // 存储promise对象数组
     let promiseArr = [];
     _.forEach(req.files, (value, key) => {
