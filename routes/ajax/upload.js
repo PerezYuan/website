@@ -13,7 +13,11 @@ qiniu.conf.ACCESS_KEY = config.qiuniuConfig.ACCESS_KEY;
 qiniu.conf.SECRET_KEY = config.qiuniuConfig.SECRET_KEY;
 
 // 创建文件夹
-fs.mkdirSync(uploadDir)
+try {
+    fs.mkdirSync(uploadDir)
+} catch (error) {
+    console.log(error);
+}
 
 router.post('/', multipartMiddleware, (req, res, next) => {
     // 存储promise对象数组
