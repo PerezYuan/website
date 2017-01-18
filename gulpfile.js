@@ -40,7 +40,7 @@ gulp.task('font', () => {
 
 gulp.task('default', ['jsmin', 'image', 'less'], () => { });
 
-gulp.watch('public/src/js/*.js', event => {
+gulp.watch('public/src/js/**/*.js', event => {
     gulp.run('jsmin');
 });
 
