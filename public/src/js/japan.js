@@ -3,6 +3,8 @@
  * @time 2016/12/19.
  * @desc 照片墙核心逻辑
  */
+import '../css/japan.less';
+
 const uploader = require('./util/uploader');
 (function ($) {
     $('#st-stack').stackslider();
