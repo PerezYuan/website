@@ -23,7 +23,7 @@ var config = {
                 loaders: ['style', 'css', 'autoprefixer', 'less'],
             }, {
                 test: /\.(eot|woff|svg|ttf|woff2|gif)(\?|$)/,
-		        loader: 'file-loader?name=[hash].[ext]'
+		        loader: 'file-loader??prefix=fonts/&name=[hash].[ext]'
             }, {
                 test: /\.(png|jpg)$/,
                 loader: 'url?limit=1200&name=[hash].[ext]'
