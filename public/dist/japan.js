@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bccc4c43671130bba4e1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a1268da9c15db8d4b18d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -608,7 +608,7 @@
 	    $('#checkLove').on('click', function () {
 	        var answer = $('input[name=answer]').val().trim();
 	        if (answer === '') {
-	            alert('请输入一生所爱~');
+	            alert('请输入一生所爱1~');
 	        } else {
 	            $.ajax({
 	                url: '/ajax/checklove',
@@ -625,6 +625,9 @@
 	                            onProgress: function onProgress(event) {
 	                                var pre = Math.floor(100 * event.loaded / event.total);
 	                                console.log(pre);
+	                            },
+	                            callback: function callback(res) {
+	                                console.log('上传成功');
 	                            }
 	                        });
 	                    } else {
@@ -737,31 +740,31 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "fonts/icomoon.99581373b82a09242dc59903422e9ebf.eot";
+	module.exports = __webpack_require__.p + "fonts/icomoon.99581373.eot";
 
 /***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "fonts/icomoon.efad468192a1adc786360805f2eb75b6.svg";
+	module.exports = __webpack_require__.p + "fonts/icomoon.efad4681.svg";
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "fonts/icomoon.bec7efb5a03e73655a8016381bff6255.woff";
+	module.exports = __webpack_require__.p + "fonts/icomoon.bec7efb5.woff";
 
 /***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "fonts/icomoon.a9669516c3388855b4497c70530b4524.ttf";
+	module.exports = __webpack_require__.p + "fonts/icomoon.a9669516.ttf";
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "images/noisebg.abd66a57a9098174d110630aeb86cfe0.png";
+	module.exports = __webpack_require__.p + "images/noisebg.abd66a57.png";
 
 /***/ },
 /* 10 */

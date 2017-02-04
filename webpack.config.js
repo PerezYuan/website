@@ -25,10 +25,10 @@ var config = {
                 loaders: ['style', 'css', 'autoprefixer', 'less'],
             }, {
                 test: /\.(eot|woff|svg|ttf|woff2)(\?|$)/,
-		        loader: 'file-loader?name=fonts/[name].[hash].[ext]'
+		        loader: 'file-loader?name=fonts/[name].[hash:8].[ext]'
             }, {
                 test: /\.(png|jpg|gif)$/,
-                loader: 'url?limit=1200&name=images/[name].[hash].[ext]'
+                loader: 'url?limit=1200&name=images/[name].[hash:8].[ext]'
             }
         ]
     },
