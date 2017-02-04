@@ -21,7 +21,7 @@ const uploader = require('./util/uploader');
     $('#checkLove').on('click',() => {
         let answer = $('input[name=answer]').val().trim();
         if (answer === '') {
-            alert('请输入一生所爱~');
+            alert('请输入一生所爱1~');
         } else {
             $.ajax({
                 url: '/ajax/checklove',
@@ -38,7 +38,10 @@ const uploader = require('./util/uploader');
                             onProgress(event) {
                                 let pre = Math.floor(100 * event.loaded / event.total);
                                 console.log(pre);
-                            }
+                            },
+                            callback(res) {
+                                console.log('上传成功');
+                            },
                         })
                     } else {
                         alert(res.msg);

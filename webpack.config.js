@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 var config = {
     entry: {
@@ -30,6 +31,19 @@ var config = {
                 loader: 'url?limit=1200&name=images/[name].[hash].[ext]'
             }
         ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin({
+            multiStep: true
+        }),
+    ],
+    devServer: {
+            historyApiFallback: true,
+            hot: true,
+            inline: true,
+            stats: 'errors-only',
+            host: "localhost", // Defaults to `localhost`   process.env.HOST
+            port: "3020",  // Defaults to 8080   process.env.PORT
     }
 }
 
