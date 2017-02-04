@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "dist/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -198,31 +198,31 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dist/99581373b82a09242dc59903422e9ebf.eot";
+	module.exports = __webpack_require__.p + "fonts/icomoon.99581373b82a09242dc59903422e9ebf.eot";
 
 /***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dist/efad468192a1adc786360805f2eb75b6.svg";
+	module.exports = __webpack_require__.p + "fonts/icomoon.efad468192a1adc786360805f2eb75b6.svg";
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dist/bec7efb5a03e73655a8016381bff6255.woff";
+	module.exports = __webpack_require__.p + "fonts/icomoon.bec7efb5a03e73655a8016381bff6255.woff";
 
 /***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dist/a9669516c3388855b4497c70530b4524.ttf";
+	module.exports = __webpack_require__.p + "fonts/icomoon.a9669516c3388855b4497c70530b4524.ttf";
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dist/abd66a57a9098174d110630aeb86cfe0.png";
+	module.exports = __webpack_require__.p + "images/noisebg.abd66a57a9098174d110630aeb86cfe0.png";
 
 /***/ },
 /* 10 */
