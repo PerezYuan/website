@@ -6,7 +6,7 @@ var config = {
         japan: path.join(__dirname, 'public/src/js/japan')
     },
     output: {
-        path: __dirname + "/public/dist",
+        path: __dirname + "/public/dist/",
         filename: '[name].js'
     },
     devtool: 'source-map',
@@ -23,10 +23,10 @@ var config = {
                 loaders: ['style', 'css', 'autoprefixer', 'less'],
             }, {
                 test: /\.(eot|woff|svg|ttf|woff2|gif)(\?|$)/,
-		        loader: 'file-loader??prefix=fonts/&name=[hash].[ext]'
+		        loader: 'file-loader?name=dist/[hash].[ext]'
             }, {
                 test: /\.(png|jpg)$/,
-                loader: 'url?limit=1200&name=[hash].[ext]'
+                loader: 'url?limit=1200&name=dist/[hash].[ext]'
             }
         ]
     }
